@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Ускорение сборки проектов на C++</title>
+
+	<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+	<meta name="author" content="Hakim El Hattab">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="libs/reveal.js/4.1.3/reset.css">
+	<link rel="stylesheet" href="libs/reveal.js/4.1.3/reveal.css">
+
+	
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+	  <!-- highlight Theme -->
+  	
+	  <link rel="stylesheet" href="libs/highlight.js/11.3.1/styles/default.min.css">
+	
+	
+		
+	<link rel="stylesheet" href="libs/reveal.js/4.1.3/plugin/chalkboard/style.css">
+	
+	
+	
+	<link rel="stylesheet" href="libs/styles/tasklist.css">
+
+
+
+  <!-- Revealjs Theme -->
+  
+  	<link rel="stylesheet" href="libs/reveal.js/4.1.3/theme/serif.css" id="theme">
+  
+  
+
+
+  <!-- Revealjs Theme -->
+  
+
+ 
+</head>
+
+<body>
+  
+    <div id="logo" style="position: fixed; top: 20px; left: 20px; z-index: 1; height:3rem;">
+        <img src="img/logo.png" style="height:100%"/>
+    </div>
+  
+
+
+  <div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+      
+
+
+    
+        <section >
+            
+            <h4>Ускорение сборки проектов на C++</h4>
+<p><small>Александр Тулуп<br><a href="mailto:tulup@ascon.ru">tulup@ascon.ru</a></small></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Проблема</h3>
+<p><img src="img/compile.jpg" alt="compile"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Что есть ?</h3>
+<ul>
+<li>~3 миллиона строк</li>
+<li>~4500 .cpp &amp; ~4000 .h</li>
+<li>55 проектов</li>
+<li>boost, stl, winapi</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Поиск узких мест</h3>
+<ul>
+<li>Resharper C++ Analyze Includes</li>
+<li><a href="https://devblogs.microsoft.com/cppblog/finding-build-bottlenecks-with-cpp-build-insights/">C++ Build Insights</a></li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Resharper C++ Analyze Includes</h3>
+<p><img src="img/multi_index_container.hpp.png" alt="resharper_cpp"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>C++ Build Insights</h3>
+<ul>
+<li>Visual Studio 2019</li>
+<li><a href="https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install">latest Windows ADK</a></li>
+<li><code>perf_msvcbuildinsights.dll</code> -&gt; WPA directory</li>
+<li><code>perfcore.ini</code> add <code>perf_msvcbuildinsights.dll</code></li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>C++ Build Insights</h3>
+<ul>
+<li><code>vcperf /start MySessionName</code></li>
+<li>compile your project</li>
+<li><code>vcperf /stop MySessionName outputFile.etl</code></li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h6>C++ Build Insights</h6>
+<p><img src="img/linux-feature-draft-boost-hpps-optimization.png" alt="profiler step 1"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h6>C++ Build Insights</h6>
+<p><img src="img/include-analyzer.png" alt="include-analyzer"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Include What You Use (iwyu)</h3>
+<ul>
+<li>удаляет лишние include</li>
+<li>добавляет forward declaration</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Include What You Use (iwyu)</h3>
+<ul>
+<li><code>llvm</code></li>
+<li><code>-DLLVM_ENABLE_PROJECTS=&quot;clang;clang-tools-extra&quot;</code></li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Include What You Use (iwyu)</h3>
+<pre><code>// найти лишние include
+iwyu_tool -j 256 -p compile_commands.json -- -w &gt; iwyu_res.cpp
+</code></pre>
+<pre><code>// применить исправления
+fix_includes.py &lt; iwyu_res.cpp
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>PCH</h3>
+<ul>
+<li><code>vcperf /start MySessionName</code></li>
+<li>compile your project</li>
+<li><code>vcperf /stopnoanalyze MySessionName outputFile.etl</code></li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>PCH</h3>
+<p><img src="img/top_headers.png" alt="top_headers"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>PCH</h3>
+<p><img src="img/with_pch.png" alt="with_pch"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Результаты</h3>
+<p><img src="img/a5b68f59e5c0d181c59db099ba3ecae621a9b4d3.png" alt="profiler step 2"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Результаты</h3>
+<h6><a href="https://docs.google.com/spreadsheets/d/1cbizmv5p2pZk-3vLuv1MqV849x4IXV85vQmua3JO_F8/edit#gid=0">https://docs.google.com/spreadsheets/d/1cbizmv5p2pZk-3vLuv1MqV849x4IXV85vQmua3JO_F8/edit#gid=0</a></h6>
+<p><img src="img/compile_time_table.png" alt="result"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Результаты</h3>
+<p><img src="img/result.png" alt="result"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Спасибо!</h3>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Ссылки</h3>
+<ul>
+<li><a href="https://github.com/include-what-you-use/include-what-you-use">Include What You Use</a></li>
+<li><a href="https://devblogs.microsoft.com/cppblog/finding-build-bottlenecks-with-cpp-build-insights/">Finding build bottlenecks with C++ Build Insights</a></li>
+</ul>
+
+            </section>
+    
+
+
+    </div>
+
+
+  </div>
+
+  	
+	<script src="libs/reveal.js/4.1.3/reveal.js"></script>
+	<script src="libs/reveal.js/4.1.3/plugin/zoom/zoom.js"></script>
+	<script src="libs/reveal.js/4.1.3/plugin/notes/notes.js"></script>
+	<script src="libs/reveal.js/4.1.3/plugin/search/search.js"></script>
+	<script src="libs/reveal.js/4.1.3/plugin/markdown/markdown.js"></script>
+	<script src="libs/reveal.js/4.1.3/plugin/highlight/highlight.js"></script>
+	
+	<script src="libs/reveal.js/4.1.3/plugin/math/math.js"></script>
+
+	<script src="libs/reveal.js/4.1.3/plugin/fullscreen/plugin.js"></script>
+  
+  	<script src="libs/reveal.js/4.1.3/plugin/animate/plugin.js"></script>
+  	<script src="libs/reveal.js/4.1.3/plugin/animate/svg.min.js"></script>
+  
+  	<script src="libs/reveal.js/4.1.3/plugin/anything/plugin.js"></script>
+	  <script src="libs/reveal.js/4.1.3/plugin/anything/Chart.min.js"></script>
+	<script src="libs/reveal.js/4.1.3/plugin/anything/d3/d3.v3.min.js"></script>				
+	<script src="libs/reveal.js/4.1.3/plugin/anything/d3.patch.js"></script>			
+	<script src="libs/reveal.js/4.1.3/plugin/anything/d3/queue.v1.min.js"></script>		
+	<script src="libs/reveal.js/4.1.3/plugin/anything/d3/topojson.v1.min.js"></script>		
+	<script src="libs/reveal.js/4.1.3/plugin/anything/function-plot.js"></script>
+
+ <!--	<script src="libs/reveal.js/4.1.3/plugin/audio-slideshow/plugin.js"></script>  -->
+<!--	<script src="libs/reveal.js/4.1.3/plugin/audio-slideshow/recorder.js"></script>-->
+<!--	<script src="libs/reveal.js/4.1.3/plugin/audio-slideshow/RecordRTC.js"></script>-->
+
+
+	<script src="libs/reveal.js/4.1.3/plugin/customcontrols/plugin.js"></script>
+	<script src="libs/reveal.js/4.1.3/plugin/embed-tweet/plugin.js"></script>
+
+	<script src="libs/reveal.js/4.1.3/plugin/chart/chart.min.js"></script>
+	<script src="libs/reveal.js/4.1.3/plugin/chart/plugin.js"></script>
+
+  <script>
+
+		const printPlugins = [
+			RevealNotes, 
+			RevealHighlight,
+			RevealMath,
+			RevealAnimate,
+			
+			RevealEmbedTweet,
+			RevealChart,
+		];
+
+		const plugins =  [...printPlugins,
+		RevealZoom, 
+		RevealSearch, 
+				RevealMarkdown, 
+				
+				RevealFullscreen,
+				RevealAnything,
+				//RevealAudioSlideshow,
+				//RevealAudioRecorder,
+				
+				// poll
+				// question
+				// seminar
+				 ]
+
+
+		// Also available as an ES module, see:
+		// https://revealjs.com/initialization/
+		Reveal.initialize({
+			controls: false,
+			controlsTutorial: true,
+			controlsLayout: 'bottom-right',
+			controlsBackArrows: 'faded',
+			progress: true,
+			slideNumber: false,
+			//#showSlideNumber "all" "print" "speaker"
+			hash: true,//#  hash: false,
+			//# respondToHashChanges: true,
+			//# history: false,
+			keyboard: true,
+			//#keyboardCondition: null,
+			overview: true,
+			center: true,
+			touch: true,
+			loop: false,
+			rtl: false,
+			//#navigationMode: 'default', linear grid
+			shuffle: false,
+			fragments: true,
+			fragmentInURL: false,
+			embedded: false,
+			help: true,
+			//#pause: true
+			showNotes: false,
+			autoPlayMedia: false, // TODO fix this to a nullable value
+			//#preloadIframes: null. true false
+			//#autoAnimate: true
+			//#autoAnimateMatcher: null,
+			//#autoAnimateEasing: 'ease',
+			//autoAnimateDuration: 1.0,
+			//#autoAnimateUnmatched: true
+			//#autoAnimateStyles: []
+			autoSlide: 0, // TODO fix this to a falseable value
+			autoSlideStoppable: true,
+			autoSlideMethod: '0',
+			defaultTiming: 120,
+			mouseWheel: false,
+			//#previewLinks: false
+			//#postMessage: true,  // TODO : this can cause issues with the vscode api ???
+			//#postMessageEvents: false,
+			//#focusBodyOnPageVisibilityChange: true,
+			transition: 'slide',
+			transitionSpeed: 'default',
+			backgroundTransition: 'fade',
+			//#pdfMaxPagesPerSlide: Number.POSITIVE_INFINITY,
+			//#pdfSeparateFragments: true,
+			//#pdfPageHeightOffset: -1,
+			viewDistance: 3,
+			//#mobileViewDistance: 2,
+			display: 'block',
+			//#hideInactiveCursor: true,
+			//#hideCursorTime: 5000
+
+			// Parallax Background
+			parallaxBackgroundImage: '',
+			parallaxBackgroundSize: '',
+			parallaxBackgroundHorizontal: 0,
+			parallaxBackgroundVertical: 0,
+			
+			//Presentation Size
+			width: 960,
+			height: 700,
+			margin: 0.04,
+			minScale: 0.2,
+			maxScale: 2,
+			disableLayout: false,
+
+			audio: {
+				prefix: 'audio/', 	// audio files are stored in the "audio" folder
+				suffix: '.ogg',		// audio files have the ".ogg" ending
+				textToSpeechURL: null,  // the URL to the text to speech converter
+				defaultNotes: false, 	// use slide notes as default for the text to speech converter
+				defaultText: false, 	// use slide text as default for the text to speech converter
+				advance: 0, 		// advance to next slide after given time in milliseconds after audio has played, use negative value to not advance
+				autoplay: false,	// automatically start slideshow
+				defaultDuration: 5,	// default duration in seconds if no audio is available
+				defaultAudios: true,	// try to play audios with names such as audio/1.2.ogg
+				playerOpacity: 0.05,	// opacity value of audio player if unfocused
+				playerStyle: 'position: fixed; bottom: 4px; left: 25%; width: 50%; height:75px; z-index: 33;', // style used for container of audio controls
+				startAtFragment: false, // when moving to a slide, start at the current fragment or at the start of the slide
+			},
+			
+			customcontrols: {
+					controls: [
+      						{
+						  id: 'toggle-overview',
+						  title: 'Toggle overview (O)',
+						  icon: '<i class="fa fa-th"></i>',
+						  action: 'Reveal.toggleOverview();'
+						}
+						
+				]
+			},
+			chart: {
+					defaults: { 
+						color: 'lightgray', // color of labels
+						scale: { 
+							beginAtZero: true, 
+							ticks: { stepSize: 1 },
+							grid: { color: "lightgray" } , // color of grid lines
+						},
+					},
+					line: { borderColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ], "borderDash": [ [5,10], [0,0] ] }, 
+					bar: { backgroundColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ]}, 
+					pie: { backgroundColor: [ ["rgba(0,0,0,.8)" , "rgba(220,20,20,.8)", "rgba(20,220,20,.8)", "rgba(220,220,20,.8)", "rgba(20,20,220,.8)"] ]},
+					radar: { borderColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ]}, 
+			},
+			math: {
+				mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+				config: 'TeX-AMS_HTML-full',
+				// pass other options into `MathJax.Hub.Config()`
+				TeX: { Macros: { RR: "{\\bf R}" } }
+				},
+				anything: [ 
+				{
+		className: "plot",
+		defaults: {width:500, height: 500, grid:true},
+		initialize: (function(container, options){ options.target = "#"+container.id; functionPlot(options) })
+	 },
+	 {
+		className: "chart",  
+		initialize: (function(container, options){ container.chart = new Chart(container.getContext("2d"), options);  })
+	 },
+	 {
+		className: "anything",
+		initialize: (function(container, options){ if (options && options.initialize) { options.initialize(container)} })
+	 },
+					],
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: (window.location.search.match(/print-pdf/gi) ? printPlugins : plugins ) 
+		});
+			
+
+
+	    // Change chalkboard theme : 
+		function changeTheme(input) {
+			var config = {};
+			config.theme = input.value;
+			Reveal.getPlugin("RevealChalkboard").configure(config);
+			input.blur();
+		}
+
+		// // Handle the message inside the webview
+        // window.addEventListener('message', event => {
+
+        //     const message = event.data; // The JSON data our extension sent
+
+        //     switch (message.command) {
+        //         case 'refactor':
+        //             Reveal.toggleHelp();
+        //     }
+        // });
+
+		if (window.location.search.match(/print-pdf-now/gi)) {
+      		setTimeout(() => {
+				window.print();
+			  }, 2500);
+			
+    }
+		
+
+	</script>
+
+</body>
+
+</html>
