@@ -1,0 +1,7 @@
+framework NET461
+
+source https://nuget.org/api/v2
+
+nuget FsReveal
+nuget FAKE
+nuget Suave
