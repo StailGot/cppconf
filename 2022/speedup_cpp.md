@@ -1,6 +1,6 @@
 ---
 
-title: "Ускорение сборки проектов на C++"
+title: "Ускорение сборки КОМПАС-3D с помощью PCH"
 author: "Александр Тулуп"
 theme : "serif"
 # theme : "league"
@@ -14,7 +14,7 @@ enableChalkboard: false
 enableTitleFooter: false
 ---
 
-#### Ускорение сборки проектов на C++
+#### Ускорение сборки КОМПАС-3D с помощью PCH
 <small>Александр Тулуп<br>tulup@ascon.ru</small>
 
 ---
