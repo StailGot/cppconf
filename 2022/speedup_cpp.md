@@ -120,7 +120,7 @@ fix_includes.py < iwyu_res.cpp
 ---
 
 ### Результаты
-###### https://docs.google.com/spreadsheets/d/1cbizmv5p2pZk-3vLuv1MqV849x4IXV85vQmua3JO_F8/edit#gid=0
+###### https://t.ly/sieO
 
 ![result](img/compile_time_table.png)
 
