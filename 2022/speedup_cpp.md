@@ -3,7 +3,8 @@
 title: "Ускорение сборки КОМПАС-3D с помощью PCH"
 author: "Александр Тулуп"
 # theme : "serif"
-theme : "league"
+# theme : "league"
+theme : "black"
 highlightTheme : "default"
 
 transition : "slide"
