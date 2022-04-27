@@ -64,12 +64,6 @@ enableTitleFooter: false
 
 ---
 
-###### C++ Build Insights
-![include-analyzer](img/include-analyzer.png)
-
-
----
-
 ### Include What You Use (iwyu)
 - удаляет лишние include
 - добавляет forward declaration
