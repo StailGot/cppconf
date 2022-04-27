@@ -2,8 +2,8 @@
 
 title: "Ускорение сборки КОМПАС-3D с помощью PCH"
 author: "Александр Тулуп"
-theme : "serif"
-# theme : "league"
+# theme : "serif"
+theme : "league"
 highlightTheme : "default"
 
 transition : "slide"
@@ -120,7 +120,7 @@ fix_includes.py < iwyu_res.cpp
 ---
 
 ### Результаты
-###### https://t.ly/sieO
+<!-- ###### https://t.ly/sieO -->
 
 ![result](img/compile_time_table.png)
 
