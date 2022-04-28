@@ -64,6 +64,24 @@ enableTitleFooter: false
 
 ---
 
+### PCH
+- `vcperf /start MySessionName`
+- compile your project
+- `vcperf /stopnoanalyze MySessionName outputFile.etl`
+
+---
+
+### PCH
+![top_headers](img/top_headers.png)
+
+
+---
+
+### PCH
+![with_pch](img/with_pch.png)
+
+---
+
 ### Include What You Use (iwyu)
 - удаляет лишние include
 - добавляет forward declaration
@@ -87,25 +105,6 @@ iwyu_tool -j 256 -p compile_commands.json -- -w > iwyu_res.cpp
 // применить исправления
 fix_includes.py < iwyu_res.cpp
 ```
-
----
-
-### PCH
-- `vcperf /start MySessionName`
-- compile your project
-- `vcperf /stopnoanalyze MySessionName outputFile.etl`
-
----
-
-### PCH
-![top_headers](img/top_headers.png)
-
-
----
-
-### PCH
-![with_pch](img/with_pch.png)
-
 
 ---
 
