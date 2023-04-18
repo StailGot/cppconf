@@ -18,8 +18,9 @@ enableTitleFooter: false
 #### Компиляция под Linux
 <small>Александр Тулуп<br>tulup@ascon.ru</small>
 
-<br><small>Конференция разработчиков</small><br>
-<small>АСКОН, Renga, C3D и Партнеров 2023</small>
+<span style="font-size: 15pt">
+<br>Конференция разработчиков<br>
+АСКОН, Renga, C3D и Партнеров 2023</span>
 
 ---
 
@@ -58,6 +59,8 @@ enableTitleFooter: false
 ---
 
 ### Спасибо!
+
+![link](img/link.png)
 
 ---
 
