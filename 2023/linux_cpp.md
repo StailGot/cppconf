@@ -26,8 +26,8 @@ enableTitleFooter: false
 
 ### MSVC
 
-- `-fvisibility-ms-compat`
 - `-fms-extensions`
+- `-fvisibility-ms-compat`
 
 ---
 
