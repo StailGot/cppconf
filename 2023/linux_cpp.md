@@ -65,3 +65,5 @@ enableTitleFooter: false
 - [cmdoption-clang-fvisibility-ms-compat](https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-fvisibility-ms-compat)
 - [-fvisibility-ms-compat](https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Dialect-Options.html)
 - [cmdoption-clang-fms-extensions](https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-fms-extensions)
+- [LINK_DEPENDS_NO_SHARED](https://cmake.org/cmake/help/latest/prop_tgt/LINK_DEPENDS_NO_SHARED.html#prop_tgt:LINK_DEPENDS_NO_SHARED)
+- [LINK_WHAT_YOU_USE](https://cmake.org/cmake/help/latest/prop_tgt/LINK_WHAT_YOU_USE.html)
