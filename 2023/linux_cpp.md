@@ -24,6 +24,13 @@ enableTitleFooter: false
 
 ---
 
+### CMake
+
+- `CMAKE_LINK_DEPENDS_NO_SHARED`
+- `CMAKE_LINK_WHAT_YOU_USE`
+
+---
+
 ### MSVC
 
 - `-fms-extensions`
@@ -36,12 +43,6 @@ enableTitleFooter: false
 - `-Wl,--no-undefined`
 - `--exclude-libs,ALL`
 
----
-
-### CMake
-
-- `CMAKE_LINK_DEPENDS_NO_SHARED`
-- `CMAKE_LINK_WHAT_YOU_USE`
 
 ---
 
