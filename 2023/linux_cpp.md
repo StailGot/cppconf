@@ -62,4 +62,6 @@ enableTitleFooter: false
 ---
 
 ### Ссылки
-- [Foo](Bar)
+- [cmdoption-clang-fvisibility-ms-compat](https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-fvisibility-ms-compat)
+- [-fvisibility-ms-compat](https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Dialect-Options.html)
+- [cmdoption-clang-fms-extensions](https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-fms-extensions)
