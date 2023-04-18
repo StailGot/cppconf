@@ -17,12 +17,16 @@ enableChalkboard: false
 enableTitleFooter: false
 ---
 
+<div style="text-align: left">
+
 #### Обзор самых интересных проблем при портировании КОМПАС-3D под Linux
 <small>Александр Тулуп<br>tulup@ascon.ru</small>
 
 <span style="font-size: 15pt">
 <br>Конференция разработчиков<br>
 АСКОН, Renga, C3D и Партнеров 2023</span>
+
+</div>
 
 ---
 
