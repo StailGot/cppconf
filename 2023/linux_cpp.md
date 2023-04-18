@@ -1,6 +1,6 @@
 ---
 
-title: "Компиляция под Linux"
+title: "Обзор самых интересных проблем при портировании КОМПАС под Linux"
 author: "Александр Тулуп"
 # theme : "serif"
 # theme : "league"
@@ -15,7 +15,7 @@ enableChalkboard: false
 enableTitleFooter: false
 ---
 
-#### Компиляция под Linux
+#### Обзор самых интересных проблем при портировании КОМПАС под Linux
 <small>Александр Тулуп<br>tulup@ascon.ru</small>
 
 <span style="font-size: 15pt">
@@ -54,7 +54,7 @@ enableTitleFooter: false
 
 ### MOLD
 
-- `-fuse-ld=${MOLD_PATH}`
+- `-fuse-ld=mold`
 
 ---
 
