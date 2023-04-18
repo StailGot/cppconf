@@ -40,6 +40,28 @@ enableTitleFooter: false
 
 ---
 
+### MSVC -fms-extensions
+
+```c++ { data-line-numbers }
+struct foo
+{
+  void baz() { std::cout << "Base" << std::endl; }
+};
+
+struct bar : public foo
+{
+  // Clang, -fms-extensions
+  void baz() { return __super::baz(); }
+};
+
+int main()
+{
+    bar{}.baz();
+}
+```
+
+---
+
 ### Link
 
 - `-Wl,--no-undefined`

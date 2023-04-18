@@ -115,6 +115,32 @@
     
         <section >
             
+            <h3>MSVC -fms-extensions</h3>
+<pre><code data-line-numbers="" class="language-c++">struct foo
+{
+  void baz() { std::cout &lt;&lt; &quot;Base&quot; &lt;&lt; std::endl; }
+};
+
+struct bar : public foo
+{
+  // Clang, -fms-extensions
+  void baz() { return __super::baz(); }
+};
+
+int main()
+{
+    bar{}.baz();
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
             <h3>Link</h3>
 <ul>
 <li><code>-Wl,--no-undefined</code></li>
