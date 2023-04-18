@@ -56,7 +56,7 @@ struct bar : public foo
 
 int main()
 {
-    bar{}.baz();
+  bar{}.baz();
 }
 ```
 
