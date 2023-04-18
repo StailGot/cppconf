@@ -31,6 +31,19 @@ enableTitleFooter: false
 - `CMAKE_LINK_DEPENDS_NO_SHARED`
 - `CMAKE_LINK_WHAT_YOU_USE`
 
+
+---
+
+### CMAKE_LINK_WHAT_YOU_USE
+
+```bash
+Linking CXX shared library Build/Exe/Debug-x64-Linux/libkHost.so
+Warning: Unused direct dependencies:
+	/Source/../Build/Exe/Debug-x64-Linux/libUI_Preview.so
+	/Source/../Build/Exe/Debug-x64-Linux/libkDrawTool.so
+	/Source/../Build/Exe/Debug-x64-Linux/libkSys.so
+```
+
 ---
 
 ### MSVC
@@ -82,19 +95,6 @@ void Bar()
   return Foo();
 }
 ```
-
----
-
-### Link -Wl,--no-undefined
-
-```bash
-Linking CXX shared library Build/Exe/Debug-x64-Linux/libkHost.so
-Warning: Unused direct dependencies:
-	/Source/../Build/Exe/Debug-x64-Linux/libUI_Preview.so
-	/Source/../Build/Exe/Debug-x64-Linux/libkDrawTool.so
-	/Source/../Build/Exe/Debug-x64-Linux/libkSys.so
-```
-
 
 ---
 

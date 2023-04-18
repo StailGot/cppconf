@@ -101,6 +101,22 @@
     
         <section >
             
+            <h3>CMAKE_LINK_WHAT_YOU_USE</h3>
+<pre><code class="language-bash">Linking CXX shared library Build/Exe/Debug-x64-Linux/libkHost.so
+Warning: Unused direct dependencies:
+	/Source/../Build/Exe/Debug-x64-Linux/libUI_Preview.so
+	/Source/../Build/Exe/Debug-x64-Linux/libkDrawTool.so
+	/Source/../Build/Exe/Debug-x64-Linux/libkSys.so
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
             <h3>MSVC</h3>
 <ul>
 <li><code>-fms-extensions</code></li>
@@ -164,22 +180,6 @@ void Bar()
 {
   return Foo();
 }
-</code></pre>
-
-            </section>
-    
-
-
-
-    
-        <section >
-            
-            <h3>Link -Wl,–no-undefined</h3>
-<pre><code class="language-bash">Linking CXX shared library Build/Exe/Debug-x64-Linux/libkHost.so
-Warning: Unused direct dependencies:
-	/Source/../Build/Exe/Debug-x64-Linux/libUI_Preview.so
-	/Source/../Build/Exe/Debug-x64-Linux/libkDrawTool.so
-	/Source/../Build/Exe/Debug-x64-Linux/libkSys.so
 </code></pre>
 
             </section>
