@@ -61,6 +61,18 @@ void Bar()
 }
 ```
 
+---
+
+### Link -Wl,--no-undefined
+
+```bash
+Linking CXX shared library Build/Exe/Debug-x64-Linux/libkHost.so
+Warning: Unused direct dependencies:
+	/Source/../Build/Exe/Debug-x64-Linux/libUI_Preview.so
+	/Source/../Build/Exe/Debug-x64-Linux/libkDrawTool.so
+	/Source/../Build/Exe/Debug-x64-Linux/libkSys.so
+```
+
 
 ---
 
