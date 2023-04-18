@@ -19,12 +19,12 @@ enableTitleFooter: false
 
 <div style="text-align: left">
 
-#### Обзор самых интересных проблем при портировании КОМПАС-3D под Linux
+### Обзор самых интересных проблем при портировании КОМПАС-3D под Linux
 <small>Александр Тулуп<br>tulup@ascon.ru</small>
 
-<span style="font-size: 15pt">
-<br>Конференция разработчиков<br>
-АСКОН, Renga, C3D и Партнеров 2023</span>
+<div style="line-height: 19pt ;font-size: 15pt">
+<br><br><br><br><br><br><br>Конференция разработчиков<br>
+АСКОН, Renga, C3D и Партнеров 2023</div>
 
 </div>
 
