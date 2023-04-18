@@ -1,6 +1,6 @@
 ---
 
-title: "Обзор самых интересных проблем при портировании КОМПАСа под Linux"
+title: "Обзор самых интересных проблем при портировании КОМПАС-3D под Linux"
 author: "Александр Тулуп"
 # theme : "serif"
 # theme : "league"
@@ -15,7 +15,7 @@ enableChalkboard: false
 enableTitleFooter: false
 ---
 
-#### Обзор самых интересных проблем при портировании КОМПАСа под Linux
+#### Обзор самых интересных проблем при портировании КОМПАС-3D под Linux
 <small>Александр Тулуп<br>tulup@ascon.ru</small>
 
 <span style="font-size: 15pt">
