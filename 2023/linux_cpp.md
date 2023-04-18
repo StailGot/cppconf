@@ -8,7 +8,7 @@ theme : "black"
 highlightTheme : "default"
 
 transition : "slide"
-logoImg: "img/logo.png"
+logoImg: "img/logo-3.png"
 controls: false
 enableMenu: false
 enableChalkboard: false
@@ -17,6 +17,23 @@ enableTitleFooter: false
 
 #### Компиляция под Linux
 <small>Александр Тулуп<br>tulup@ascon.ru</small>
+
+<br><small>Конференция разработчиков</small><br>
+<small>АСКОН, Renga, C3D и Партнеров 2023</small>
+
+---
+
+### MSVC
+
+- `-fvisibility-ms-compat`
+- `-fms-extensions`
+
+---
+
+### Link
+
+- `-Wl,--no-undefined`
+- `--exclude-libs,ALL`
 
 ---
 
@@ -37,23 +54,6 @@ enableTitleFooter: false
 ### MOLD
 
 - `-fuse-ld=${MOLD_PATH}`
-
-
----
-
-### Link
-
-- `-Wl,--no-undefined`
-- `--exclude-libs,ALL`
-
-
----
-
-### MSVC
-
-- `-fvisibility-ms-compat`
-- `-fms-extensions`
-
 
 ---
 
