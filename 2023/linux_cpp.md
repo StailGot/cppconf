@@ -50,7 +50,7 @@ enableTitleFooter: false
 
 ### Link -Wl,--no-undefined
 
-```c++
+```c++ { data-line-numbers }
 void Foo();
 
 // -Wl,--no-undefined
