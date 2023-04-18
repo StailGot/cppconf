@@ -40,8 +40,8 @@ enableTitleFooter: false
 
 ### CMAKE_LINK_WHAT_YOU_USE
 
-```bash
-Linking CXX shared library Build/Exe/Debug-x64-Linux/libkHost.so
+```bash { data-line-numbers }
+Linking CXX shared library Build/Exe/.../libkHost.so
 Warning: Unused direct dependencies:
 	/Source/../Build/Exe/Debug-x64-Linux/libUI_Preview.so
 	/Source/../Build/Exe/Debug-x64-Linux/libkDrawTool.so
