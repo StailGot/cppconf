@@ -21,7 +21,7 @@
 
   <!-- highlight Theme -->
   
-  <link rel="stylesheet" href="libs/highlight.js/11.3.1/styles/default.min.css">
+  <link rel="stylesheet" href="libs/highlight.js/11.3.1/styles/atom-one-dark.min.css">
   
 	
 		
@@ -35,7 +35,7 @@
 
   <!-- Revealjs Theme -->
   
-  <link rel="stylesheet" href="libs/reveal.js/4.3.1/theme/black.css" id="theme">
+  <link rel="stylesheet" href="libs/reveal.js/4.3.1/theme/night.css" id="theme">
   
   
 
@@ -120,6 +120,25 @@
 <li><code>-Wl,--no-undefined</code></li>
 <li><code>--exclude-libs,ALL</code></li>
 </ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Link -Wl,–no-undefined</h3>
+<pre><code class="language-c++">void Foo();
+
+// -Wl,--no-undefined
+// undefined reference to `Foo()'
+void Bar()
+{
+  return Foo();
+}
+</code></pre>
 
             </section>
     

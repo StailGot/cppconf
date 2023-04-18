@@ -4,8 +4,10 @@ title: "Обзор самых интересных проблем при пор�
 author: "Александр Тулуп"
 # theme : "serif"
 # theme : "league"
-theme : "black"
-highlightTheme : "default"
+theme : "night"
+# theme : "black"
+# highlightTheme : "default"
+highlightTheme : "atom-one-dark"
 
 transition : "slide"
 logoImg: "img/logo-3.png"
@@ -42,6 +44,22 @@ enableTitleFooter: false
 
 - `-Wl,--no-undefined`
 - `--exclude-libs,ALL`
+
+
+---
+
+### Link -Wl,--no-undefined
+
+```c++
+void Foo();
+
+// -Wl,--no-undefined
+// undefined reference to `Foo()'
+void Bar()
+{
+  return Foo();
+}
+```
 
 
 ---
