@@ -38,6 +38,12 @@ enableTitleFooter: false
 
 ---
 
+#### CMAKE_LINK_DEPENDS_NO_SHARED
+
+- Do not relink all depended targets on .so
+
+---
+
 ### CMAKE_LINK_WHAT_YOU_USE
 
 ```bash { data-line-numbers }
