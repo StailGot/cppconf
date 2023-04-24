@@ -146,7 +146,7 @@ void Bar()
 
 ---
 
-### Link exclude-libs,ALL
+### Link --exclude-libs,ALL
 
 - excludes symbols in all archive libraries from automatic export
 
