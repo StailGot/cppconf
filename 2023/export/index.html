@@ -215,6 +215,20 @@ int main()
             
             <h3>MSVC -fvisibility-ms-compat</h3>
 <ul>
+<li><code>-Wweak-vtables</code></li>
+<li>warning: A has no out-of-line virtual method definitions; its vtable will be emitted in every translation unit</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>MSVC -fvisibility-ms-compat</h3>
+<ul>
 <li>It sets the default visibility to hidden, like <code>-fvisibility=hidden</code></li>
 <li>Types, but not their members, are not hidden by default.</li>
 <li>The One Definition Rule is relaxed for types without explicit visibility specifications that are defined in more than one shared object: those declarations are permitted if they are permitted when this option is not used.</li>
