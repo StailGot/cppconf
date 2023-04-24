@@ -85,6 +85,44 @@ int main()
 
 ---
 
+### MSVC -fvisibility-ms-compat
+
+```c++ { data-line-numbers }
+// Foo.so
+struct IBase
+{
+  virtual void Foo() = 0;
+};
+struct Foo : public IBase
+{
+  virtual void Foo() override {};
+};
+// Bar.so
+int main()
+{
+ // -fvisibility-ms-compat, -stdlib=libc++
+ ASSERT(dynamic_cast<Foo*>(GetBase()) != nullptr);
+}
+```
+
+---
+
+### MSVC -fvisibility-ms-compat
+
+- `-stdlib=libc++`
+- `-fvisibility=hidden`
+- `__attribute__((visibility("default")))`
+
+---
+
+### MSVC -fvisibility-ms-compat
+
+- It sets the default visibility to hidden, like `-fvisibility=hidden`
+- Types, but not their members, are not hidden by default.
+- The One Definition Rule is relaxed for types without explicit visibility specifications that are defined in more than one shared object: those declarations are permitted if they are permitted when this option is not used.
+
+---
+
 ### Link
 
 - `-Wl,--no-undefined`
@@ -108,16 +146,28 @@ void Bar()
 
 ---
 
-### ASAN
+### Link exclude-libs,ALL
 
-- `-fsanitize=address`
-
+- excludes symbols in all archive libraries from automatic export
 
 ---
 
-### MOLD
+### Warnings
 
-- `-fuse-ld=mold`
+- `-Werror`
+- `-Wold-style-cast`
+- `-Wgnu`
+- `-Wunreachable-code`
+- `-Wunused-function`
+- `-Wdelete-abstract-non-virtual-dtor`
+- `-Winfinite-recursion`
+...
+
+---
+
+### ASAN
+
+- `-fsanitize=address`
 
 ---
 
