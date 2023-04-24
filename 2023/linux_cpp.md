@@ -111,6 +111,11 @@ int main()
 
 - `-fvisibility=hidden`
 - `-stdlib=libc++`
+
+---
+
+### MSVC -fvisibility-ms-compat
+
 - `__attribute__((visibility("default")))`
 
 ---
