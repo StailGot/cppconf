@@ -105,6 +105,19 @@
     
         <section >
             
+            <h4>CMAKE_LINK_DEPENDS_NO_SHARED</h4>
+<ul>
+<li>Do not relink all depended targets on .so</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
             <h3>CMAKE_LINK_WHAT_YOU_USE</h3>
 <pre><code data-line-numbers="" class="language-bash">Linking CXX shared library Build/Exe/.../libkHost.so
 Warning: Unused direct dependencies:
@@ -161,6 +174,88 @@ int main()
     
         <section >
             
+            <h3>MSVC -fvisibility-ms-compat</h3>
+<pre><code data-line-numbers="" class="language-c++">// Foo.so
+struct IBase
+{
+  virtual void Foo() = 0;
+};
+struct Foo : public IBase
+{
+  virtual void Foo() override {};
+};
+// Bar.so
+int main()
+{
+ // -fvisibility-ms-compat, -stdlib=libc++
+ ASSERT(dynamic_cast&lt;Foo*&gt;(GetBase()) != nullptr);
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>MSVC -fvisibility-ms-compat</h3>
+<ul>
+<li><code>-fvisibility=hidden</code></li>
+<li><code>-stdlib=libc++</code></li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>MSVC -fvisibility-ms-compat</h3>
+<ul>
+<li><code>__attribute__((visibility(&quot;default&quot;)))</code></li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>MSVC -fvisibility-ms-compat</h3>
+<ul>
+<li><code>-Wweak-vtables</code></li>
+<li>warning: A has no out-of-line virtual method definitions; its vtable will be emitted in every translation unit</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>MSVC -fvisibility-ms-compat</h3>
+<ul>
+<li>It sets the default visibility to hidden, like <code>-fvisibility=hidden</code></li>
+<li>Types, but not their members, are not hidden by default.</li>
+<li>The One Definition Rule is relaxed for types without explicit visibility specifications that are defined in more than one shared object: those declarations are permitted if they are permitted when this option is not used.</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
             <h3>Link</h3>
 <ul>
 <li><code>-Wl,--no-undefined</code></li>
@@ -194,9 +289,9 @@ void Bar()
     
         <section >
             
-            <h3>ASAN</h3>
+            <h3>Link --exclude-libs,ALL</h3>
 <ul>
-<li><code>-fsanitize=address</code></li>
+<li>excludes symbols in all archive libraries from automatic export</li>
 </ul>
 
             </section>
@@ -207,9 +302,29 @@ void Bar()
     
         <section >
             
-            <h3>MOLD</h3>
+            <h3>Warnings</h3>
 <ul>
-<li><code>-fuse-ld=mold</code></li>
+<li><code>-Werror</code></li>
+<li><code>-Wold-style-cast</code></li>
+<li><code>-Wgnu</code></li>
+<li><code>-Wunreachable-code</code></li>
+<li><code>-Wunused-function</code></li>
+<li><code>-Wdelete-abstract-non-virtual-dtor</code></li>
+<li><code>-Winfinite-recursion</code>
+…</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>ASAN</h3>
+<ul>
+<li><code>-fsanitize=address</code></li>
 </ul>
 
             </section>
